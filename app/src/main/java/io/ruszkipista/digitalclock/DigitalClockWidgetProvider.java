@@ -3,6 +3,7 @@ package io.ruszkipista.digitalclock;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -11,28 +12,28 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.text.format.DateFormat;
+
 import java.util.Calendar;
 
 public class DigitalClockWidgetProvider extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
-
-        context.startService(new Intent(UpdateTimeService.UPDATE_TIME));
+        context.startService(new Intent(context,UpdateTimeService.class));
     }
 
     @Override
     public void onDisabled(Context context) {
         super.onDisabled(context);
-
         context.stopService(new Intent(context, UpdateTimeService.class));
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
-
-        context.startService(new Intent(UpdateTimeService.UPDATE_TIME));
+        Log.d("DigitalClock","onUpdate");
+        Intent serviceIntent = new Intent(context,UpdateTimeService.class);
+        context.startService(serviceIntent);
     }
 
     public static final class UpdateTimeService extends Service {
@@ -47,10 +48,17 @@ public class DigitalClockWidgetProvider extends AppWidgetProvider {
             mIntentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
         }
 
+        private final BroadcastReceiver mTimeChangedReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                updateTime();
+            }
+        };
+
         @Override
         public void onCreate() {
             super.onCreate();
-
+            Log.d("DigitalClock","onCreate");
             mCalendar = Calendar.getInstance();
             registerReceiver(mTimeChangedReceiver, mIntentFilter);
         }
@@ -80,16 +88,8 @@ public class DigitalClockWidgetProvider extends AppWidgetProvider {
             return null;
         }
 
-        private final BroadcastReceiver mTimeChangedReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                updateTime();
-            }
-        };
-
         private void updateTime() {
             mCalendar.setTimeInMillis(System.currentTimeMillis());
-
             RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.digital_clock_widget);
             mRemoteViews.setTextViewText(R.id.Hours, DateFormat.format(getString(R.string.hour_format), mCalendar));
             mRemoteViews.setTextViewText(R.id.Minutes, DateFormat.format(getString(R.string.minute_format), mCalendar));
