@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/transparent"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/Time"
-        android:text="@string/time_format"
+        android:id="@+id/Hours"
+        android:text="@string/hours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
@@ -15,13 +16,27 @@
         android:includeFontPadding="false"
         android:singleLine="true"
         android:ellipsize="none"
-        android:textColor="#FFFFFFFF"
+        android:textColor="@android:color/white"
         android:fontFamily="sans-serif-thin"
         android:textStyle="bold"
         android:textSize="64sp"/>
-
     <TextView
-        android:id="@+id/Date"
+        android:id="@+id/Minutes"
+        android:text="@string/minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:padding="0sp"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:textSize="64sp"/>
+    <TextView
+        android:id="@+id/Day"
+        android:text="@string/day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
@@ -29,9 +44,9 @@
         android:includeFontPadding="false"
         android:singleLine="true"
         android:ellipsize="none"
-        android:textColor="#FFFFFFFF"
+        android:textColor="@android:color/white"
         android:fontFamily="sans-serif"
         android:textStyle="normal"
         android:textSize="14sp"/>
 
-</FrameLayout>
+</LinearLayout>

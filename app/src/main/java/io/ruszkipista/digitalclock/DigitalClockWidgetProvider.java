@@ -13,7 +13,7 @@ import android.os.IBinder;
 import android.text.format.DateFormat;
 import java.util.Calendar;
 
-public class DigitalClockWidget extends AppWidgetProvider {
+public class DigitalClockWidgetProvider extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
@@ -91,10 +91,11 @@ public class DigitalClockWidget extends AppWidgetProvider {
             mCalendar.setTimeInMillis(System.currentTimeMillis());
 
             RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.digital_clock_widget);
-            mRemoteViews.setTextViewText(R.id.Time, DateFormat.format(getString(R.string.time_format), mCalendar));
-            mRemoteViews.setTextViewText(R.id.Date, DateFormat.format(getString(R.string.date_format), mCalendar));
+            mRemoteViews.setTextViewText(R.id.Hours, DateFormat.format(getString(R.string.hour_format), mCalendar));
+            mRemoteViews.setTextViewText(R.id.Minutes, DateFormat.format(getString(R.string.minute_format), mCalendar));
+            mRemoteViews.setTextViewText(R.id.Day, DateFormat.format(getString(R.string.date_format), mCalendar));
 
-            ComponentName mComponentName = new ComponentName(this, DigitalClockWidget.class);
+            ComponentName mComponentName = new ComponentName(this, DigitalClockWidgetProvider.class);
             AppWidgetManager mAppWidgetManager = AppWidgetManager.getInstance(this);
             mAppWidgetManager.updateAppWidget(mComponentName, mRemoteViews);
         }

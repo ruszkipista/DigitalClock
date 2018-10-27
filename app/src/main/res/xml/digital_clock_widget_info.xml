@@ -4,7 +4,8 @@
     android:initialLayout="@layout/digital_clock_widget"
     android:minWidth="40dp"
     android:minHeight="110dp"
-    android:previewImage="@drawable/example_appwidget_preview"
-    android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="86400000"
-    android:widgetCategory="home_screen|keyguard">Info</appwidget-provider>
+    android:previewImage="@drawable/digital_clock"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen|keyguard">
+</appwidget-provider>

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <receiver
-            android:name=".DigitalClockWidget"
+            android:name=".DigitalClockWidgetProvider"
             android:label="@string/widget_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -22,7 +22,7 @@
                 android:resource="@xml/digital_clock_widget_info" />
         </receiver>
         <service
-            android:name=".DigitalClockWidget$UpdateTimeService"
+            android:name=".DigitalClockWidgetProvider$UpdateTimeService"
             android:exported="false">
             <intent-filter>
                 <action android:name="io.ruszkipista.digitalclock.action.UPDATE_TIME"/>
