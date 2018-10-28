@@ -3,10 +3,10 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="widget_name">Digital Clock</string>
-    <string name="hours">HH</string>
-    <string name="minutes">MM</string>
+    <string name="hours">23</string>
+    <string name="minutes">59</string>
     <string name="day">day of week</string>
-    <string name="hour_format">hh</string>
+    <string name="hour_format">HH</string>
     <string name="minute_format">mm</string>
     <string name="date_format">EEE, dd MMMM</string>
 </resources>

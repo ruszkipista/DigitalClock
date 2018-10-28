@@ -4,7 +4,7 @@
     android:initialLayout="@layout/digital_clock_widget"
     android:minWidth="80dp"
     android:minHeight="110dp"
-    android:updatePeriodMillis="6000"
+    android:updatePeriodMillis="60000"
     android:previewImage="@drawable/digital_clock"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen">
