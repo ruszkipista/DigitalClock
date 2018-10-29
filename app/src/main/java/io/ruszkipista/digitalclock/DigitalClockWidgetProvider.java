@@ -61,6 +61,7 @@ public class DigitalClockWidgetProvider extends AppWidgetProvider {
             Log.d("DigitalClock","onCreate");
             mCalendar = Calendar.getInstance();
             registerReceiver(mTimeChangedReceiver, mIntentFilter);
+            updateTime();
         }
 
         @Override
